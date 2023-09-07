@@ -3,6 +3,8 @@ from tkinter import *
 window = Tk()
 window.title("Calculator")
 
+# Set the icon
+window.iconbitmap('assets/calculator-fill.ico')
 
 #global variable
 i = 0
