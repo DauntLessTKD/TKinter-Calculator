@@ -1,42 +1,45 @@
+# Import the tkinter library
 from tkinter import *
 
+# Create a tkinter window
 window = Tk()
-window.title("Calculator")
+window.title("Calculator")  # Set the window title
 
-# Set the icon
-window.iconbitmap('assets/calculator-fill.ico')
-
-#global variable
+# Global variable to keep track of the entry index
 i = 0
 
-# Data Entry
-e_text = Entry(window, font= ("Calibri 20"))
-e_text.grid(row= 0, column= 0, columnspan= 4, padx= 20, pady= 5)
+# Data Entry Field
+e_text = Entry(window, font=("Calibri 20"))  # Create an entry field
+e_text.grid(row=0, column=0, columnspan=4, padx=20, pady=5)  # Place the entry field in the window
 
-#Functions
+# Function to handle button clicks
 def click_button(value):
     global i
-    e_text.insert(i, value)
+    e_text.insert(i, value)  # Insert the clicked button's value into the entry field
     i += 1
 
+# Function to clear the entry field
 def delete():
-    e_text.delete(0, END)
+    e_text.delete(0, END)  # Delete the content of the entry field
     i = 0
 
+# Function to perform mathematical operations
 def operations():
     try:
-        equation = e_text.get()
-        result = eval(equation)
-        e_text.delete(0, END)
-        e_text.insert(0, result)
+        equation = e_text.get()  # Get the content of the entry field
+        result = eval(equation)  # Evaluate the mathematical expression
+        e_text.delete(0, END)  # Clear the entry field
+        e_text.insert(0, result)  # Insert the result back into the entry field
         i = 0
     except ZeroDivisionError:
-        e_text.delete(0, END)
-        e_text.insert(0, "infinite")
+        e_text.delete(0, END)  # Clear the entry field
+        e_text.insert(0, "infinite")  # Display "infinite" for division by zero
         i = 0
-        window.after(3000, lambda: e_text.delete(0, END))
+        window.after(3000, lambda: e_text.delete(0, END))  # Clear "infinite" after 3 seconds
 
-# Buttons
+
+# Buttons for digits and operations
+# Create buttons using lambda functions
 button1 = Button(window, text= "1", width= 5, height= 2, command = lambda: click_button(1))
 button2 = Button(window, text= "2", width= 5, height= 2, command = lambda: click_button(2))
 button3 = Button(window, text= "3", width= 5, height= 2, command = lambda: click_button(3))
@@ -59,7 +62,8 @@ button_plus = Button(window, text= "+", width= 5, height= 2, command = lambda: c
 button_subtraction = Button(window, text= "-", width= 5, height= 2, command = lambda: click_button("-"))
 button_result = Button(window, text= "=", width= 5, height= 2, command = lambda: operations())
 
-# Add the buttons to the window
+
+# Grid layout for buttons
 button_delete.grid(row= 1, column= 0, padx= 5, pady= 5)
 button_left_parenthesis.grid(row= 1, column= 1, padx= 5, pady= 5)
 button_right_parenthesis.grid(row= 1, column= 2, padx= 5, pady= 5)
@@ -84,5 +88,5 @@ button0.grid(row= 5, column= 0, columnspan= 2, padx= 5, pady= 5)
 button_period.grid(row= 5, column= 2, padx= 5, pady= 5)
 button_result.grid(row= 5, column= 3, padx= 5, pady= 5)
 
-
+# Start the tkinter main loop
 window.mainloop()
