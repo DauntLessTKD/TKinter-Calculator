@@ -21,11 +21,10 @@ Technologies used in the project:
 * Tkinter
 * Python
 
-```
-<h2>Description</h2>
-```
 
-```
+<h2> Description </h2>
+
+
 In this code: 
 
 Import Statements: The tkinter library is imported to create the graphical user interface. 
@@ -43,4 +42,4 @@ Buttons: Buttons for digits 1 to 9 operations and special characters like parent
 Grid Layout: The buttons are placed in the window using the grid() method defining their positions in rows and columns. 
 
 Main Loop: The window.mainloop() function starts the Tkinter main event loop allowing the application to respond to user interactions.
-```
+
